@@ -3,6 +3,7 @@ import { FormEvent } from "react"
 import AddressDetails from "@/components/addressDetails"
 import BasicDetails from "@/components/basicDetails"
 import CourseDetails from "@/components/courseDetails"
+import EducationalDetails from "@/components/educationalDetails"
 import { Button } from "@/components/ui/button"
 import { Card, CardFooter } from "@/components/ui/card"
 import { useMultistepForm } from "@/utils/formMulti"
@@ -13,7 +14,8 @@ export default function CardWithForm() {
   const { step, steps, currentStepIndex, next, goTo, back, isFirstStep, isLastStep } = useMultistepForm([
     <BasicDetails key={0} />,
     <AddressDetails key={1} />,
-    <CourseDetails key={2} />
+    <CourseDetails key={2} />,
+    <EducationalDetails key={3} />
   ])
 
   const handleSubmit = (e: FormEvent) => {
