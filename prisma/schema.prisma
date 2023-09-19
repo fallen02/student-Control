@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CourseDetails {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  courseName    String
+  duration      Int
+  rollNo        String   @unique
+  academicYear  Int
+  admissionDate DateTime @default(now())
+}
+
+model BasicDetails {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  fname       String
+  mname       String?
+  lname       String
+  father_name String
+  dateofBirth DateTime
+  sex         String
+  religion    String
+  cast        String
+  PhoneNo     String
+  gurdianphNo String
+  AddharNo    String   @unique
+  photo       String
+  // address   AddressDetails[]
+  //course    CourseDetails[]
+  //education EducationDetails[]
+  //bill      BillDetails[]
+}
+
+model AddressDetails {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  vill        String
+  PO          String
+  PS          String
+  district    String
+  state       String
+  PIN         Int
+  nationliaty String
+  // addrId      AcademicDetails @relation(fields: [accaId], references: [rollNo])
+  accaId      String
+}
+
+
+
+model EducationDetails {
+  id               Int      @id @default(autoincrement())
+  createdAt        DateTime @default(now())
+  ExamName         String
+  PassingYear      Int
+  PassingInstitute String
+  Percent          Int
+  TotalNo          Int
+  ObtainedNo       Int
+  // eduId            AcademicDetails @relation(fields: [accaId], references: [rollNo])
+  accaId           String
+}
+
+model BillDetails {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  totalfees  Int
+  paidAmount Int
+  // eduId      AcademicDetails @relation(fields: [accaId], references: [rollNo])
+  accaId     String
+}
